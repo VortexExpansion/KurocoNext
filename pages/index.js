@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 export default function HomePage() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -35,7 +34,6 @@ export default function HomePage() {
     </>
   );
 }
-
 // function HomePage() {
 //     return <div>Welcome to Next.js!</div>
 //   }
