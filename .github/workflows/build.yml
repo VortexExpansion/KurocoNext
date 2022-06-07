@@ -23,8 +23,6 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn build
-      - name: Generate
-        run: npm run generate
         # - name: Zip artifact for upload
         #  run: cd dist && zip ../dist.zip . -r
       - name: Archive Production Artifact
