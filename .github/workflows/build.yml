@@ -6,50 +6,7 @@ on:
   issue_comment:
     types: [created, edited]
   workflow_dispatch:
-jobs:
-  # for Pull Request (exclude merged)
-  pullreq_build:
-    name: Build(pullreq)
-    if: (github.repository == 'VortexExpansion/KurocoNext' && github.event_name == 'issue_comment' && startsWith(github.event.comment.body, '/kuroco stage') && github.event.issue.pull_request != null)
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Get branch name and sha"
-        id: get_branch
-        run: |
-          PR=$(curl -H "Authorization: token 8d90dc3cca20f1c207ce5e4c5d357742" https://sushipedia.g.kuroco.app/direct/menu/github/?pr=${{ github.event.issue.pull_request.url }})
-          echo "::set-output name=branch::$(echo $PR | jq -r '.ref')"
-          echo "::set-output name=sha::$(echo $PR | jq -r '.sha')"
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ steps.get_branch.outputs.branch }}
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
-      - name: Generate
-        run: npm run generate
-        # - name: Zip artifact for upload
-        #  run: cd dist && zip ../dist.zip . -r
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ steps.get_branch.outputs.sha }}-${{ github.run_id }}
-          path: dist
-          retention-days: 7
-      - name: Wait for Artifact download
-        run: sleep 15
-      - name: Webhook
-        uses: diverta/workflow-webhook@v2
-        env:
-          webhook_url: "https://sushipedia.g.kuroco.app/direct/menu/github/"
-          webhook_secret: "8d90dc3cca20f1c207ce5e4c5d357742"
-          data: '{"single_zip":"0","domain":"sushipedia.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ steps.get_branch.outputs.sha }}"}'
-          
+jobs:         
   #for Push
   pushed_build:
     name: Build(pushed)
@@ -63,9 +20,9 @@ jobs:
         with:
           node-version: '14.x'
       - name: Install dependencies
-        run: npm ci
+        run: yarn install
       - name: Build
-        run: npm run build
+        run: yarn build
       - name: Generate
         run: npm run generate
         # - name: Zip artifact for upload
