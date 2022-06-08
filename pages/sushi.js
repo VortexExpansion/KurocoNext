@@ -8,6 +8,10 @@ function sushi({posts,searchItems}) {
 
     {/*---------- SearchItems ------------*/}
     <div>
+    <div>
+      <input id="mySearchInput" placeholder="Search here..."></input>
+    </div>
+    <br></br>
     <table>
   <thead>
     <tr>
@@ -17,7 +21,7 @@ function sushi({posts,searchItems}) {
   </thead>
   <tbody>
     {searchItems.list.map((searchItems)=>(
-      <>
+      <>      
       <tr>
         <td>{searchItems.ext_1}</td>
         <td>{searchItems.ext_3}</td>
@@ -55,6 +59,7 @@ function sushi({posts,searchItems}) {
   }
   
   export async function getStaticProps() {
+
     // Call an external API endpoint to get posts
     const res = await fetch(process.env.BASE_URL + '/rcms-api/3/service/4')
     const posts = await res.json()
