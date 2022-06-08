@@ -1,5 +1,6 @@
 import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
 import { useState } from 'react';
+import Link from 'next/link';
 
 // async function asyncData({ $axios, app }) {
 //   try {
@@ -82,6 +83,11 @@ export default function Homepage() {
       <p>
         Your ticket will be issued to: <b>{fullName}</b>
       </p>
+
+      Read about{' '}
+      <Link href="/sushi">
+      <a>Sushi!</a>
+      </Link>
     </>
   );
 }
