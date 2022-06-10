@@ -47,9 +47,14 @@ export default class NextJsCarousel extends Component {
        <a>Sushi!</a>
        </Link>
           </div>
+
+          <div>
+          Visit Sushi List page{' '}
+                 <Link href="/sushiMain">
+       <a>Sushi List!</a>
+       </Link>
+          </div>
         </>
-          
-          
       );
   }
 };

@@ -8,7 +8,7 @@ function sushiMain() {
 
   useEffect(() => {
     setLoading(true)
-    fetch('https://sushipedia.g.kuroco.app/rcms-api/3/search')
+    fetch('https://sushipedia.g.kuroco.app/rcms-api/3/groupAll')
       .then((res) => res.json())
       .then((data) => {
         setData(data)
@@ -27,6 +27,8 @@ function sushiMain() {
           <thead>
             <tr>
               <th>Sushi</th>
+              <th>Image</th>
+              <th>Category</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -35,6 +37,8 @@ function sushiMain() {
               <>
                 <tr>
                  <td>{list.ext_1}</td>
+                 <td><img src={list.ext_2.url} width="200"></img></td>
+                 <td>{list.contents_type_nm}</td>
                 <td>{list.ext_3}</td>
               </tr>
               </>
