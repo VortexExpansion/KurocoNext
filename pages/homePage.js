@@ -1,7 +1,7 @@
 var arraylen = 10;
 const delay = 5500; 
 import React, { Component, useEffect, useState } from 'react';
-import Card from '../components/card';
+import CardAPI from '../components/card';
 
 function SlideShow({data}){
     const [index, setIndex] = React.useState(0);
@@ -49,7 +49,7 @@ function SlideShow({data}){
       );
 }
 
-export function Import({api}){
+function Import({api}){
 
     const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(false)
@@ -78,7 +78,7 @@ export default function HomePage(){
     return(
         <>
             <Import api='https://sushipedia.g.kuroco.app/rcms-api/3/groupAll'/>
-            {/* <Card/> */}
+            <CardAPI api='https://sushipedia.g.kuroco.app/rcms-api/3/search'/>
         </>
     );
 }
