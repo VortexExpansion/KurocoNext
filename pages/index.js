@@ -1,18 +1,80 @@
 import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
-import { useState } from 'react';
 import Link from 'next/link';
 
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
+function Card({source,text}){
+  return(
+    <div>
+      <img src={source} alt="image1"/>
+      <p className="legend">{text}</p>
+    </div>
+  );
+}
+
+export function Import({src}){
+
+  const [data, setData] = useState(null)
+  const [isLoading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    fetch('https://sushipedia.g.kuroco.app/rcms-api/3/groupAll')
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+        setLoading(false)
+      })
+  }, [])
+
+  if (isLoading) return <p>Loading...</p>
+if (!data) return <p>No profile data</p>
+console.log(data)
+
+return(
+  <div>
+    {data.list.map((list)=> 
+    {<Card
+      source = {list.ext_2.url}
+      text = "Default"
+    />}
+  // <div>
+  //   <img key={list.ext_2.url} src={list.ext_2.url} alt="image1"/>
+  //   <p className="legend">Image 1</p>
+  // </div>
+    )}
+  </div>
+);
+
+}
+
 export default class NextJsCarousel extends Component {
+  
   render() {
       return (
         <>
+          {/* <Import/> */}
           <div>
             <h2>Sushi Carousel</h2>
             <Carousel>
+              {/* <Import/> */}
+              <Card
+                source = "images/1.jpeg"
+                text = "Default"
+              />
+              <Card
+                source = "images/1.jpeg"
+                text = "Default"
+              />
+              <Card
+                source = "images/1.jpeg"
+                text = "Default"
+              />
+              {/* <Import
+              src = "images/1.jpeg"
+              />
                 <div>
                     <img src="images/1.jpeg" alt="image1"/>
                     <p className="legend">Image 1</p>
@@ -24,6 +86,17 @@ export default class NextJsCarousel extends Component {
 
                 </div>
                 <div>
+                    <img src="images/2.jpeg" alt="image2" />
+                    <p className="legend">Image 2</p>
+
+                </div>
+                <div>
+                    <img src="images/2.jpeg" alt="image2" />
+                    <p className="legend">Image 2</p>
+
+                </div>
+
+                <div>
                     <img src="images/3.jpeg" alt="image3"/>
                     <p className="legend">Image 3</p>
 
@@ -34,10 +107,21 @@ export default class NextJsCarousel extends Component {
 
                 </div>
                 <div>
+                <Card
+                source = "images/4.jpeg"
+                text = "Default"
+              />
+                </div>
+                <div>
+                    <img src="images/4.jpeg" alt="image4"/>
+                    <p className="legend">Image 4</p>
+
+                </div>
+                <div>
                     <img src="images/5.jpeg" alt="image5"/>
                     <p className="legend">Image 5</p>
 
-                </div>
+                </div> */}
             </Carousel>
           </div>
 
@@ -52,6 +136,13 @@ export default class NextJsCarousel extends Component {
           Visit Sushi List page{' '}
                  <Link href="/sushiMain">
        <a>Sushi List!</a>
+       </Link>
+          </div>
+
+          <div>
+          Visit HomePage{' '}
+                 <Link href="/homePage">
+       <a>HomePage!</a>
        </Link>
           </div>
         </>

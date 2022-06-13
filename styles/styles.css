@@ -2,3 +2,43 @@ table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
   }
+
+  .slideshow {
+    margin: 0 auto;
+    overflow: hidden;
+  } 
+  
+  .slide {
+    display: inline-block;
+    height: 600px;
+    width: 100%;
+    border-radius: 40px;
+  }
+
+  .imageSlide{
+    height: 600px;
+    width: 100%;
+    border-radius: 40px;
+  }
+
+  .slideshowSlider {
+    white-space: nowrap;
+    transition: ease 5500ms;
+  }
+
+  .slideshowDots {
+    text-align: center;
+  }
+  .slideshowDot {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 15px 7px 0px;
+    background-color: #c4c4c4;
+  }
+
+  .slideshowDot.active {
+    background-color: #6a0dad;
+  }
