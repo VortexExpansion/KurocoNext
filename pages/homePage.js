@@ -1,6 +1,7 @@
 var arraylen = 10;
 const delay = 5500; 
 import React, { Component, useEffect, useState } from 'react';
+import Card from '../components/card';
 
 function SlideShow({data}){
     const [index, setIndex] = React.useState(0);
@@ -77,6 +78,7 @@ export default function HomePage(){
     return(
         <>
             <Import api='https://sushipedia.g.kuroco.app/rcms-api/3/groupAll'/>
+            {/* <Card/> */}
         </>
     );
 }
