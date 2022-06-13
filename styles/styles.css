@@ -72,7 +72,11 @@ td {
   border-radius: 40px;
   text-align:center;
   vertical-align: middle;
-  background-color: #00C49F;
+  /* background-color: #00C49F; */
+  background-color: #85FFBD;
+background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+
+  
 }
 
 .imagebg{
