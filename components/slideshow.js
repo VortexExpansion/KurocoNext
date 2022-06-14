@@ -2,9 +2,10 @@ var arraylen = 10;
 const delay = 5500; 
 import React, { Component, useEffect, useState } from 'react';
 
-function SlideShow({data}){
+export default function SlideShow({data}){
     const [index, setIndex] = React.useState(0);
     const timeoutRef = React.useRef(null);
+    arraylen = data.length;
 
     function resetTimeout() {
         if (timeoutRef.current) {
@@ -31,19 +32,19 @@ function SlideShow({data}){
         <>
           <div className="slideshow"> 
             <div className="slideshowSlider" style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
-            {data.list.map((list,index)=> 
-                <div key={index} className="slide">
-                    <img className="imageSlide" src={list.ext_2.url}></img>
+            {data.map((sushi)=> 
+                <div key={sushi.topics_id} className="slide">
+                    <img className="imageSlide" src={sushi.ext_1.url}></img>
                     <div className="sliderText">
-                        <h1 id="adjust">{list.ext_1} </h1>
-                        <h3 id="adjust">{list.ext_3}</h3>
+                        <h1 id="adjust">{sushi.ext_2} </h1>
+                        <h3 id="adjust">{sushi.ext_4}</h3>
                     </div>
                 </div>
              )}
             </div>
             <br></br>
             <div className="slideshowDots">
-            {data.list.map((_, idx) => (
+            {data.map((_, idx) => (
               <div key={idx} className={`slideshowDot${index === idx ? " active" : ""}`} onClick={() => {setIndex(idx);}}></div>
             ))}
           </div> 
@@ -51,26 +52,3 @@ function SlideShow({data}){
         </>
       );
 }
-
-export default function SlideshowAPI({api}){
-
-    const [data, setData] = useState(null)
-    const [isLoading, setLoading] = useState(false)
-    
-  
-    useEffect(() => {
-      setLoading(true)
-      fetch(api)
-        .then((res) => res.json())
-        .then((data) => {
-          setData(data)
-          setLoading(false)
-        })
-    }, [])
-  
-  if (isLoading) return <p>Loading...</p>
-  if (!data) return <p>No profile data</p>
-  arraylen = data.list.length;
-
-  return(<SlideShow data = {data} />);
-  }

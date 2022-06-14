@@ -1,50 +1,24 @@
 import React, { Component, useEffect, useState } from 'react';
-const colors = ["#0088FE", "#00C49F", "#FFBB28"];
 
-export function CategoryCard({ data, className, id }) {
+export default function CategoryCard({data}) {
+
+    const key = 'contents_type_nm' //This is the category name in Kuroco;
+    const categoriesList = [...new Map(data.map(sushi =>[sushi[key], sushi])).values()];
+
     return (
         <>
             <br></br>
             <div>
-                {data.map((list, index) => (
-                    <div className={[className, "wrapthis"].join(' ')} key={index}>
-                        <a href={"/categories/"+list.topics_id}></a>
-                        <img src={list.ext_2.url} className="imagebg"></img>
-                        <h1>{list.ext_1}</h1>
-                        <h3>{list.ext_3}</h3>
-                        <div id={id}>
-                            <h1>{list.contents_type_nm}</h1>
-                        </div>
+                {categoriesList.map((category) => (
+                    <div className="wrapthis slideCard" key={category.contents_type}>
+                        {/* <a href={"/categories/"+list.topics_id}></a>  CONFIGURE THIS*/}
+                        <img src={category.contents_type_ext_col_01} className="imagebg"></img>
+                        <h1>{category.contents_type_nm}</h1>
+                        <h3>{category.contents_type_ext_col_02}</h3>
                     </div>
                 ))}
                 <hr></hr>
             </div>
         </>
-    );
-}
-
-export default function CategoryAPI({ api }) {
-
-    const [data, setData] = useState(null)
-    const [isLoading, setLoading] = useState(false)
-
-
-    useEffect(() => {
-        setLoading(true)
-        fetch(api)
-            .then((res) => res.json())
-            .then((data) => {
-                setData(data)
-                setLoading(false)
-            })
-    }, [])
-
-    if (isLoading) return <p>Loading...</p>
-    if (!data) return <p>No profile data</p>
-    console.log(data);
-    return (
-    <>
-    <CategoryCard data={data.list} className="slideCard" id="slide"/>
-    </>    
     );
 }
