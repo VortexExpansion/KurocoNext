@@ -35,8 +35,8 @@ function SlideShow({data}){
                 <div key={index} className="slide">
                     <img className="imageSlide" src={list.ext_2.url}></img>
                     <div className="sliderText">
-                        <h1 id="adjust1">{list.ext_1} </h1>
-                        <h3 id="adjust2">{list.ext_3}</h3>
+                        <h1 id="adjust">{list.ext_1} </h1>
+                        <h3 id="adjust">{list.ext_3}</h3>
                     </div>
                 </div>
              )}
