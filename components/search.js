@@ -1,13 +1,12 @@
 import React, { Component, useEffect, useState } from 'react';
 import {Card} from './card';
 
-function Search({ data,className}) {
+function Search({ data,className, id}) {
 
 const [searchKey, setSearchKey] = useState('');
-
-
 const filteredItems = data.list.filter(list =>
-     list.ext_1.toLowerCase().includes(searchKey.toLowerCase())
+     list.ext_1.toLowerCase().includes(searchKey.toLowerCase()) ||
+     list.contents_type_nm.toLowerCase().includes(searchKey.toLowerCase())
     );
 
 function handleSearchKeyChange(e) {
@@ -18,29 +17,16 @@ function handleSearchKeyChange(e) {
     return (
         <>
         <input
+          size={50}  
           value={searchKey}
           onChange={handleSearchKeyChange}
-          placeholder="Seach here..."
+          placeholder="Seach by Sushi Name or Category"
         />
 
-        <Card data = {filteredItems} className={className}/>
+        <Card data = {filteredItems} className={className} id={id}/>
         </>
     );
 }
-
-function submitForm(answer) {
-    // Pretend it's hitting the network.
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        let shouldError = answer.toLowerCase() !== 'lima'
-        if (shouldError) {
-          reject(new Error('Good guess but a wrong answer. Try again!'));
-        } else {
-          resolve();
-        }
-      }, 1500);
-    });
-  }
 
 export default function SearchAPI({api}){
 
@@ -66,7 +52,7 @@ export default function SearchAPI({api}){
 
   return(
     <>
-    <Search data = {data} className="allCard"/>
+    <Search data = {data} className="allCard" id="all"/>
     </>
   );
   }
