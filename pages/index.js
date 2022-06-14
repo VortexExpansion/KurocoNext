@@ -126,13 +126,6 @@ export default class NextJsCarousel extends Component {
           </div>
 
           <div>
-          Read more about{' '}
-                 <Link href="/sushi">
-       <a>Sushi!</a>
-       </Link>
-          </div>
-
-          <div>
           Visit Sushi List page{' '}
                  <Link href="/sushiMain">
        <a>Sushi List!</a>
