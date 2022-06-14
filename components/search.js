@@ -13,7 +13,6 @@ function handleSearchKeyChange(e) {
     setSearchKey(e.target.value);
   }
 
-    
     return (
         <>
         <input
@@ -22,7 +21,6 @@ function handleSearchKeyChange(e) {
           onChange={handleSearchKeyChange}
           placeholder="Seach by Sushi Name or Category"
         />
-
         <Card data = {filteredItems} className={className} id={id}/>
         </>
     );
@@ -46,9 +44,6 @@ export default function SearchAPI({api}){
   
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No profile data</p>
-
-  console.log("Search.js");
-  console.log(data);
 
   return(
     <>

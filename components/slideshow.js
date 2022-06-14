@@ -34,10 +34,14 @@ function SlideShow({data}){
             {data.list.map((list,index)=> 
                 <div key={index} className="slide">
                     <img className="imageSlide" src={list.ext_2.url}></img>
+                    <div className="sliderText">
+                        <h1 id="adjust1">{list.ext_1} </h1>
+                        <h3 id="adjust2">{list.ext_3}</h3>
+                    </div>
                 </div>
              )}
             </div>
-    
+            <br></br>
             <div className="slideshowDots">
             {data.list.map((_, idx) => (
               <div key={idx} className={`slideshowDot${index === idx ? " active" : ""}`} onClick={() => {setIndex(idx);}}></div>
@@ -67,8 +71,6 @@ export default function SlideshowAPI({api}){
   if (isLoading) return <p>Loading...</p>
   if (!data) return <p>No profile data</p>
   arraylen = data.list.length;
-
-  console.log(data)
 
   return(<SlideShow data = {data} />);
   }

@@ -40,8 +40,7 @@ export default function CardAPI({ api }) {
 
     if (isLoading) return <p>Loading...</p>
     if (!data) return <p>No profile data</p>
-
-    console.log(data)
+    
     return (<Card data={data.list} className="slideCard" id="slide"/>);
 }
 
