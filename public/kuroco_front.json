@@ -6,7 +6,7 @@
       },
       {
         "source": "^/categories/([0-9]+)/",
-        "destination": "/categories/$1.html"
+        "destination": "/categories/$1/index.html"
       }
   ]
 }
