@@ -6,11 +6,11 @@
       },
       {
         "source": "^/categories/([0-9]+)",
-        "destination": "/categories/[categoryId]/index.html"
+        "destination": "/categories/$1/index.html"
       },
       {
         "source": "^/categories/([0-9]+)/",
-        "destination": "/categories/[categoryId]/index.html"
+        "destination": "/categories/$1/index.html"
       }
   ]
 }
