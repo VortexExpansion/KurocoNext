@@ -2,7 +2,17 @@
     "rewrites": [
         {
           "source": ".*",
-          "destination": "/index.html"
+          "destination": "/homePage.html"
         }
-    ]
+    ],
+    "redirects": [
+      {
+        "source": "^/homePage/",
+        "destination": "/homePage.html/"
+      },
+      {
+        "source": "^/categories/([0-9]+)/",
+        "destination": "/categories/[categoryId].html/"
+      }
+  ]
 }

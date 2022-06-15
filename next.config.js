@@ -20,16 +20,16 @@ module.exports = {
     baseURL: process.env.BASE_URL
   },
 
-  async redirects() {
-    return [
-      {
-        source: '/sushi',
-        destination: '/',
-        permanent: true
-      },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/sushi',
+  //       destination: '/',
+  //       permanent: true
+  //     },
 
-    ]
+  //   ]
 
-  },
+  // },
 
 }
