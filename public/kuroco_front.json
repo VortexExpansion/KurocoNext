@@ -1,17 +1,11 @@
 {
     "rewrites": [
-        {
-          "source": ".*",
-          "destination": "/homePage.html"
-        }
-    ],
-    "redirects": [
       {
-        "source": "^/homePage/",
-        "destination": "/homePage.html/"
+        "source": "^/homePage",
+        "destination": "/homePage.html"
       },
       {
-        "source": "^/categories/([0-9]+)/",
+        "source": "^/categories/([0-9]+)",
         "destination": "/categories/$1.html"
       }
   ]
