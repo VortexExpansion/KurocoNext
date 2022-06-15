@@ -2,11 +2,15 @@
     "rewrites": [
       {
         "source": "^/homePage",
-        "destination": "/homePage.html"
+        "destination": "/homePage/index.html"
+      },
+      {
+        "source": "^/categories/([0-9]+)",
+        "destination": "/categories/[categoryId]/index.html"
       },
       {
         "source": "^/categories/([0-9]+)/",
-        "destination": "/categories/$1/index.html"
+        "destination": "/categories/[categoryId]/index.html"
       }
   ]
 }

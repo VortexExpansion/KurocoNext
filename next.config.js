@@ -19,16 +19,17 @@ module.exports = {
     // staticFolder: '/static',
     baseURL: process.env.BASE_URL
   },
+  trailingSlash: true,  
 
-  async rewrites() {
-    return [
-      {
-        source: '/categories/:categoryId',
-        destination: '/categories/:categoryId'
-      },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/categories/:categoryId',
+  //       destination: '/categories/:categoryId'
+  //     },
 
-    ]
+  //   ]
 
-  },
+  // },
 
 }
