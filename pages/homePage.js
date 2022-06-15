@@ -1,16 +1,19 @@
 import CategoryCard from '../components/category';
 import Slideshow from '../components/slideshow';
 import SushiList from '../components/allSushi';
+import FilterSushi from '../components/filterSushi';
 
 export default function HomePage({data}){
     return(
         <>
             <div className='pageBg'>
+
             <Slideshow data={data}/>
             <CategoryCard data={data}/>
-            <SushiList data={data}/>
-            </div>
+            {/* <SushiList data={data}/> */}
+            <FilterSushi data={data}/>
             
+            </div>
         </>
     );
 }
