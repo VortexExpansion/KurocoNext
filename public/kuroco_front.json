@@ -5,7 +5,7 @@
         "destination": "/homePage.html"
       },
       {
-        "source": "^/categories/([0-9]+)",
+        "source": "^/categories/([0-9]+)/",
         "destination": "/categories/$1.html"
       }
   ]
