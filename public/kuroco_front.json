@@ -12,7 +12,7 @@
       },
       {
         "source": "^/categories/([0-9]+)/",
-        "destination": "/categories/$[categoryId].html/"
+        "destination": "/categories/$1.html/"
       }
   ]
 }
