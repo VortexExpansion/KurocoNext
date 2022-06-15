@@ -20,12 +20,13 @@ module.exports = {
     baseURL: process.env.BASE_URL
   },
 
-  async redirects() {
+  async rewrites() {
     return [
       {
         source: '/categories/:categoryId',
         destination: '/categories/:categoryId'
       },
+
     ]
 
   },
