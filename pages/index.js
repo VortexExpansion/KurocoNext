@@ -56,11 +56,11 @@ export default class NextJsCarousel extends Component {
       return (
         <>
           {/* <Import/> */}
-          <div>
+          {/* <div>
             <h2>Sushi Carousel</h2>
-            <Carousel>
+            <Carousel> */}
               {/* <Import/> */}
-              <Card
+              {/* <Card
                 source = "images/1.jpeg"
                 text = "Default"
               />
@@ -71,7 +71,7 @@ export default class NextJsCarousel extends Component {
               <Card
                 source = "images/1.jpeg"
                 text = "Default"
-              />
+              /> */}
               {/* <Import
               src = "images/1.jpeg"
               />
@@ -122,8 +122,8 @@ export default class NextJsCarousel extends Component {
                     <p className="legend">Image 5</p>
 
                 </div> */}
-            </Carousel>
-          </div>
+            {/* </Carousel>
+          </div> */}
 
           <div>
           Visit Sushi List page{' '}
