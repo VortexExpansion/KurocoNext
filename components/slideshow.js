@@ -34,7 +34,7 @@ export default function SlideShow({data}){
             <div className="slideshowSlider" style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}>
             {data.map((sushi)=> 
                 <div key={sushi.topics_id} className="slide">
-                    <img className="imageSlide" src={sushi.ext_1.url}></img>
+                    <img className="imageSlide" src={sushi.ext_1.url+"?crop=16:9,smart?optimize=high"}></img>
                     <div className="sliderText">
                         <h1 id="adjust">{sushi.ext_2} </h1>
                         <h3 id="adjust">{sushi.ext_4}</h3>
