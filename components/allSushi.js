@@ -9,12 +9,12 @@ export function SushiCard({ data }) { // Using tailwind CSS
                         {data.map((sushi) => (
                             <a key={sushi.topics_id} href="#" className=" group text-center border rounded-lg bg-gray-100 hover:bg-gray-200">
                                 <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                                    <img src={sushi.ext_1.url} alt="image" className="w-full h-full object-center object-cover group-hover:opacity-75" />
+                                    <img src={sushi.ext_1.url+"?crop=2:3"} alt="image" className="w-full h-full object-center object-cover group-hover:opacity-75" />
                                 </div>
-                                <p className="mt-1 text-lg font-medium text-gray-900 group-hover:text-2xl">{sushi.ext_2}</p>
+                                <p className="bg-teal-400 mt-1 text-lg font-medium text-gray-900 group-hover:text-2xl">{sushi.ext_2}</p>
                                 <h3 className="mt-4 text-sm text-gray-700">{sushi.ext_4}</h3>
                                 <h3 className="mt-4 text-sm text-gray-700">{sushi.ext_3}</h3>
-                                <p className="mt-1 text-lg font-medium text-gray-900">{sushi.contents_type_nm}</p>
+                                <p className="mt-auto text-lg font-medium text-gray-900">{sushi.contents_type_nm}</p>
                             </a>
                         ))}
 
