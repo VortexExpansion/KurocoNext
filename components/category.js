@@ -8,7 +8,7 @@ export default function CategoryCard({ data }) {
     return (
         <>
         <div><br></br><hr></hr></div>
-            <div className="container mx-auto p-6 grid grid-cols-3 gap-8">
+            <div className="container mx-auto p-6 grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:gap-x-8">
                 {categoriesList.map((category) => (
                     <div key={category.contents_type_nm} className="group odd:bg-teal-100 even:bg-teal-200 hover:bg-emerald-400 hover:text-white rounded-xl text-center col-span-1 flex flex-col bg-white border-2 p-4">
                         <img src={category.contents_type_ext_col_01} className="m-4 group-hover:opacity-90"></img>
