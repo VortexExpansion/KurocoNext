@@ -7,19 +7,6 @@ export default function CategoryCard({ data }) {
 
     return (
         <>
-            {/* <br></br>
-            <div>
-                {categoriesList.map((category) => (
-                    <div className=" wrapthis text-center relative inline-block group m-2 p-6 space-y-3 odd:bg-teal-100 even:bg-teal-200 rounded-xl max-w-md hover:bg-teal-400" key={category.contents_type}>
-                        <a className='absolute' href={"/categories/" + category.contents_type}></a>
-                        <img src={category.contents_type_ext_col_01} className="mx-auto "></img>
-                        <h1 className='text-3xl font-medium text-black group-hover:text-white'>{category.contents_type_nm}</h1>
-                        <h3 className='text-slate-500 group-hover:text-white'>{category.contents_type_ext_col_02}</h3>
-                    </div>
-                ))}
-                <hr></hr>
-            </div> */}
-
         <div><br></br><hr></hr></div>
             <div className="container mx-auto p-6 grid grid-cols-3 gap-8">
                 {categoriesList.map((category) => (
