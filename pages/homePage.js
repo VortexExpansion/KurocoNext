@@ -2,13 +2,14 @@ import CategoryCard from '../components/category';
 import Slideshow from '../components/slideshow';
 import SushiList from '../components/allSushi';
 import FilterSushi from '../components/filterSushi';
+import AnimatedText from '../components/animatedText';
 
 export default function HomePage({data}){
     return(
         <>
-            <div className='pageBg'>
-
+            <div className='pageBg'> 
             <Slideshow data={data}/>
+            <AnimatedText text="SushiPedia"/>
             <CategoryCard data={data}/>
             {/* <SushiList data={data}/> */}
             <FilterSushi data={data}/>
