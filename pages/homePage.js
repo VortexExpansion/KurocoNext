@@ -1,7 +1,6 @@
-import CategoryCard from '../components/category';
+import CategoryCard from '../components/categoryCard';
 import Slideshow from '../components/slideshow';
-import SushiList from '../components/allSushi';
-import FilterSushi from '../components/filterSushi';
+import KurocoSearch from '../components/kurocoSearch';
 import AnimatedText from '../components/animatedText';
 
 export default function HomePage({data}){
@@ -11,9 +10,7 @@ export default function HomePage({data}){
             <Slideshow data={data}/>
             <AnimatedText text="SushiPedia"/>
             <CategoryCard data={data}/>
-            {/* <SushiList data={data}/> */}
-            <FilterSushi data={data}/>
-            
+            <KurocoSearch data={data}/>
             </div>
         </>
     );

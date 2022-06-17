@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
-import { SushiCard } from './allSushi';
+import { SushiCard } from './sushiCard';
 
-export default function FilterSushi({ data }) {
+export default function KurocoSearch({ data }) {
 
     const [dataSushi, setDataSushi] = useState(data);
     const [isLoading, setIsLoading] = useState(false);
@@ -37,8 +37,6 @@ export default function FilterSushi({ data }) {
             setIsLoading(false);
         }
     };
-
-    // console.log(dataSushi);
 
     return (
         <div>

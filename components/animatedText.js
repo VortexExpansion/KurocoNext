@@ -1,6 +1,4 @@
 export default function AnimatedText({ text }) {
-
-
     return (
         <>
             <br></br>
