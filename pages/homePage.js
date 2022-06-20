@@ -17,7 +17,6 @@ export default function HomePage({data}){
 }
 
 export async function getStaticProps() {
-  // const res = await fetch('https://sushipedia.g.kuroco.app/rcms-api/3/fetchSushi');
   const res = await fetch(process.env.BASE_URL+'/rcms-api/3/fetchSushi');
   const results = await res.json();
   return {

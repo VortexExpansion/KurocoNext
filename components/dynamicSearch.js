@@ -1,4 +1,4 @@
-import React, { Component, useCallback, useEffect, useState } from 'react';
+import React, { Component, useCallback, useEffect, useMemo, useState } from 'react';
 import { SushiCard } from "./sushiCard";
 import debounce from 'lodash.debounce';
 
@@ -18,7 +18,7 @@ export default function DynamicSearch({ data }) {
         setSearchKey(event.target.value);
       };
 
-    const debouncedChangeHandler = useCallback(debounce(handleSearchKeyChange, 300), []);  
+    const debouncedChangeHandler = useMemo(() => debounce(handleSearchKeyChange, 300), []);  
 
     return (
         <>
