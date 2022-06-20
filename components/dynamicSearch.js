@@ -1,22 +1,28 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useCallback, useEffect, useState } from 'react';
 import { SushiCard } from "./sushiCard";
+import debounce from 'lodash.debounce';
 
 export default function DynamicSearch({ data }) {
 
     const [searchKey, setSearchKey] = useState('');
-    const filteredItems = data.filter(sushi =>
-        sushi.subject.toLowerCase().includes(searchKey.toLowerCase()) ||
-        sushi.contents_type_nm.toLowerCase().includes(searchKey.toLowerCase())
-    );
+    let filteredItems = data;
 
-    function handleSearchKeyChange(e) {
-        setSearchKey(e.target.value);
+    if(searchKey!==""){
+        filteredItems = data.filter(sushi =>
+            sushi.subject.toLowerCase().includes(searchKey.toLowerCase()) ||
+            sushi.contents_type_nm.toLowerCase().includes(searchKey.toLowerCase())
+        );
     }
+    
+    const handleSearchKeyChange = event => {
+        setSearchKey(event.target.value);
+      };
+
+    const debouncedChangeHandler = useCallback(debounce(handleSearchKeyChange, 300), []);  
 
     return (
         <>
             <br></br>
-
                 <label htmlFor="default-search" className=" mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
                 <div className="relative mx-20">
                     <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -28,8 +34,7 @@ export default function DynamicSearch({ data }) {
                     className="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                     placeholder="Start typing a Sushi name..." 
                     required
-                    value={searchKey}
-                    onChange={handleSearchKeyChange}
+                    onChange={debouncedChangeHandler}
                     />
                 </div>
             <SushiCard data={filteredItems} />
