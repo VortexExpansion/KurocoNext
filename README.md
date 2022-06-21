@@ -1,3 +1,3 @@
 # KurocoNext
 
-Test readme commit
+Link : https://sushipedia.g.kuroco-front.app/homePage/
