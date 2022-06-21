@@ -1,4 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
+import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import { SushiCard } from './sushiCard';
 
 export default function KurocoSearch({ data }) {
@@ -7,9 +8,22 @@ export default function KurocoSearch({ data }) {
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState('');
     const [searchKey, setSearchKey] = useState('');
+    var result;
 
     function handleChange(e) {
         setSearchKey(e.target.value);
+    }
+
+    function arrayUnique(array) {
+        var a = array.concat();
+        for(var i=0; i<a.length; ++i) {
+            for(var j=i+1; j<a.length; ++j) {
+                if(a[i] === a[j])
+                    a.splice(j--, 1);
+            }
+        }
+    
+        return a;
     }
 
     const handleClick = async (e) => {
@@ -17,20 +31,18 @@ export default function KurocoSearch({ data }) {
         setIsLoading(true);
 
         try {
-            const response = await fetch(`https://sushipedia.g.kuroco.app/rcms-api/3/fetchSushi?filter=subject%20icontains%20"${searchKey}"`, {
-                method: 'GET',
-                headers: {
-                    Accept: 'application/json',
-                },
-            });
+            let [responseSubject, responseCategory] = await Promise.all([
+                fetch(`https://sushipedia.g.kuroco.app/rcms-api/3/fetchSushi?filter=subject%20icontains%20"${searchKey}"`),
+                fetch(`https://sushipedia.g.kuroco.app/rcms-api/3/fetchSushi?contents_type_nm=${searchKey}`)
+            ]);
 
-            if (!response.ok) {
-                throw new Error(`Error! status: ${response.status}`);
-            }
+            var subject = await responseSubject.json();
+            var category = await responseCategory.json();
 
-            const result = await response.json();
+            var searchResults = subject.list.concat(category.list);
+            var refinedResults = [... new Set(searchResults.map(JSON.stringify))].map(JSON.parse)
 
-            setDataSushi(result.list);
+            setDataSushi(refinedResults);
         } catch (err) {
             setErr(err.message);
         } finally {
@@ -61,8 +73,8 @@ export default function KurocoSearch({ data }) {
                         <button type="submit" className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                 </div>
             </form>
-
-            {isLoading && <h2 className='text-white pl-4 flex justify-center'>Fetching results...</h2>}
+            <br></br>
+            {isLoading && <h2 className='text-white pl-4 flex justify-center text-lg'>Fetching results...</h2>}
             <SushiCard data={dataSushi} />
         </div>
     );
