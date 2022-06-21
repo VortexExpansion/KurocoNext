@@ -2,28 +2,29 @@ import React, { Component, useEffect, useState } from 'react';
 import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import { SushiCard } from './sushiCard';
 
-export default function KurocoSearch({ data }) {
+export default function KurocoSearch({data,tag}) {
 
     const [dataSushi, setDataSushi] = useState(data);
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState('');
     const [searchKey, setSearchKey] = useState('');
-    var result;
-
+    
     function handleChange(e) {
         setSearchKey(e.target.value);
     }
 
-    function arrayUnique(array) {
-        var a = array.concat();
-        for(var i=0; i<a.length; ++i) {
-            for(var j=i+1; j<a.length; ++j) {
-                if(a[i] === a[j])
-                    a.splice(j--, 1);
-            }
+    const handleTagClick = async (ID) =>{
+        console.log(ID);
+        try {
+            let [response] = await Promise.all([
+                fetch(`https://sushipedia.g.kuroco.app/rcms-api/3/fetchSushi?tag_id%5B%5D=${ID}`)
+            ]);
+
+            var data = await response.json();
+            setDataSushi(data.list);
+        } catch (err) {
+            setErr(err.message);
         }
-    
-        return a;
     }
 
     const handleClick = async (e) => {
@@ -55,6 +56,7 @@ export default function KurocoSearch({ data }) {
             {err && <h2>{err}</h2>}
             <br></br>
 
+            {/* FILTER SEARCH */}
             <form noValidate onSubmit={handleClick}>
                 <label htmlFor="default-search" className=" mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Search</label>
                 <div className="relative mx-20">
@@ -75,6 +77,16 @@ export default function KurocoSearch({ data }) {
             </form>
             <br></br>
             {isLoading && <h2 className='text-white pl-4 flex justify-center text-lg'>Fetching results...</h2>}
+
+            {/* TAG SEARCH */}
+            <div className='relative mx-20'>
+                {tag.map((tag,item) => (
+                    <button key={item} onClick={()=> handleTagClick(tag.tag_id)}  className="m-1 px-4 py-2 rounded-full bg-gray-300">
+                    {tag.tag_nm}
+                </button>
+                ))}
+            </div>
+
             <SushiCard data={dataSushi} />
         </div>
     );

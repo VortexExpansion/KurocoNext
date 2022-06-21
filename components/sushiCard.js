@@ -15,6 +15,15 @@ export function SushiCard({ data }) { // Using tailwind CSS
                                 <h3 className="mt-4 text-sm text-gray-700">{sushi.ext_4}</h3>
                                 <h3 className="mt-4 text-sm text-gray-700">{sushi.ext_3}</h3>
                                 <p className="mt-auto text-lg font-medium text-gray-900">{sushi.contents_type_nm}</p>
+
+                                {/* Tags */}
+                                <div className="flex flex-wrap justify-center space-x-2">
+                                {sushi.tags.map((tag,tagItem)=> (
+                                    <span key={tagItem} className="m-1 px-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold text-sm flex align-center w-max cursor-pointer active:bg-gray-300 transition duration-300 ease">
+                                        {tag.tag_nm}
+                                    </span>
+                                ))}
+                                </div>
                             </div>
                         ))}
 
