@@ -51,10 +51,12 @@ yarn dev
 yarn build
 ```
 
-### Kuroco Configuration
+## Kuroco Configuration
 - Sign up for Kuroco's [free trial](https://kuroco.app/free_trial/)
 - Integrate your cloned repo to Kuroco by following this [documentation](https://kuroco.app/docs/tutorials/beginners-guide/#integrate-github-into-kuroco)
+- Go to your Kuroco Management Page and select `Default` from `API` dropdown. Then choose `Import as a new API` from the given radio buttons and upload the `exported_api.yaml` folder from the original repository. 
 
+<img src="https://user-images.githubusercontent.com/55151618/174977445-16bbd51f-e946-4af5-aa0b-09ff10ffac73.png" width="700" />
 
 # Documentation for backend
 - ## Add new Sushi
