@@ -46,9 +46,23 @@ yarn dev
 ```
 > Congratulations! Your project will be hosted locally at http://localhost:3000/homePage/
 
+### For building the project 
+```
+yarn build
+```
 
+## Documentation for backend
+- ### Add new Sushi
+Go to contents list and select `Sushi List`, on the top right corner of the screen click on `Add`  
 
+<img src="https://user-images.githubusercontent.com/55151618/174956220-715cacee-0012-4b48-82a5-541e0c30e33a.png" width="700" />
 
+Select the `Category` from dropdown and enter the `Title`. Also enter other non-required information below if you want to
 
+<img src="https://user-images.githubusercontent.com/55151618/174960025-0b4611c0-0f1f-4851-90c5-f0c33fb44edb.png" width="700" />
 
+Choose or Add a new `Tag` and then finally click on `Add` to submit the data
 
+<img src="https://user-images.githubusercontent.com/55151618/174960872-a6ad74d4-eb75-4427-afb9-0490825a68db.png" width="700" />
+
+On reloading the website, you can now view the newly added Sushi
