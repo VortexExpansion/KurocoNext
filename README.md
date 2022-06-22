@@ -18,3 +18,11 @@ Add multiple tags to different items and then filter by tags by the tags API end
 
 - [Kuroco Custom Function](https://kuroco.app/docs/tutorials/creating-a-custom-function-endpoint/) : 
 Created a custom endpoint for searching by `category_type_nm` which is currently not available by Kuroco
+
+- [Kuroco Files](https://kuroco.app/docs/tutorials/difference-between-kurocofiles-and-kurocofront/) : 
+Storing and rendering content for `Category settings` of a content list
+
+- [Kuroco API](https://kuroco.app/docs/tutorials/configure-endpoint/) : 
+Configuring multiple custom endpoints for fetching results
+
+
