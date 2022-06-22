@@ -51,6 +51,11 @@ yarn dev
 yarn build
 ```
 
+### Kuroco Configuration
+- Sign up for Kuroco's [free trial](https://kuroco.app/free_trial/)
+- Integrate your cloned repo to Kuroco by following this [documentation](https://kuroco.app/docs/tutorials/beginners-guide/#integrate-github-into-kuroco)
+
+
 # Documentation for backend
 - ## Add new Sushi
 Select `Sushi List` from `Content` Dropdown menu, then on the top right corner of the screen click on `Add`  
