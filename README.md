@@ -3,8 +3,8 @@
 ## Deployed at : [SushiPedia](https://sushipedia.g.kuroco-front.app/homePage/)
 Sushipedia is like an encyclopedia for Sushi. This site would serve as a manual for incoming foreigners in Japan. The main purpose of creating this site was to get familiar with NextJS and different features of Kuroco and leave all the logic and functionality to the backend and stick to mostly just rendering the components on frontend.
 
-#### Frontend : NextJS, TailwindCSS
-#### Backend : Kuroco  
+### Frontend : NextJS, TailwindCSS
+### Backend : Kuroco  
 
 ## Preview
 
@@ -29,6 +29,23 @@ Storing and rendering content for `Category Settings` of a content list
 
 - [Kuroco API](https://kuroco.app/docs/tutorials/configure-endpoint/) : 
 Configuring multiple custom endpoints for fetching results
+
+## Installation 
+
+### Requirements
+- Node.js :`14.x`  
+- Yarn  :`1.15.x`
+
+
+### Steps to run locally :　
+```
+git clone https://github.com/VortexExpansion/KurocoNext.git
+cd KurocoNext
+yarn install 
+yarn dev
+```
+> Congratulations! Your project will be hosted locally at http://localhost:3000/homePage/
+
 
 
 
