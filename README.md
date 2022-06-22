@@ -46,9 +46,44 @@ yarn dev
 ```
 > Congratulations! Your project will be hosted locally at http://localhost:3000/homePage/
 
+### For building the project 
+```
+yarn build
+```
 
+## Kuroco Configuration
+- Sign up for Kuroco's [free trial](https://kuroco.app/free_trial/)
+- Integrate your cloned repo to Kuroco by following this [documentation](https://kuroco.app/docs/tutorials/beginners-guide/#integrate-github-into-kuroco)
+- Go to your Kuroco Management Page and select `Default` from `API` dropdown. Then choose `Import as a new API` from the given radio buttons and upload the `exported_api.yaml` folder from the original repository. 
 
+<img src="https://user-images.githubusercontent.com/55151618/174977445-16bbd51f-e946-4af5-aa0b-09ff10ffac73.png" width="700" />
 
+# Documentation for backend
+- ## Add new Sushi
+Select `Sushi List` from `Content` Dropdown menu, then on the top right corner of the screen click on `Add`  
 
+<img src="https://user-images.githubusercontent.com/55151618/174956220-715cacee-0012-4b48-82a5-541e0c30e33a.png" width="700" />
 
+Select the `Category` from dropdown and enter the `Title`. Also enter other non-required information below if you want to
 
+<img src="https://user-images.githubusercontent.com/55151618/174960025-0b4611c0-0f1f-4851-90c5-f0c33fb44edb.png" width="700" />
+
+Choose or Add a new `Tag` and then finally click on `Add` to submit the data
+
+<img src="https://user-images.githubusercontent.com/55151618/174960872-a6ad74d4-eb75-4427-afb9-0490825a68db.png" width="700" />
+
+On reloading the website, you can now view the newly added Sushi
+
+- ## Define custom functions using Kuroco Smarty
+
+Select `Function` from `Operation` dropdown menu, then on the top right corner of the screen click on `Add`
+
+<img src="https://user-images.githubusercontent.com/55151618/174964652-83656f0b-b9e8-46a3-bf94-c127c3af5da7.png" width="700" />
+
+Set the `Title` preferably by the name of the endpoint it is pointing to. Choose the `Category` from the dropdown menu and set the `Identifier` which is the unique identifier on which you want to perform your operation
+
+<img src="https://user-images.githubusercontent.com/55151618/174965921-8cbba2e6-2316-4e09-b327-9e709db29fb1.png" width="700" />
+
+Inside the `Process` field, type the commands that you want to perform and click on `Add/Update`. The language here is `Kuroco Smarty`, refer this [documentation](https://github.com/diverta/kuroco-smarty)
+
+<img src="https://user-images.githubusercontent.com/55151618/174967347-4b8f149c-3a64-4ca9-941c-84d565d33110.png" width="700" />
