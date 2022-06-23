@@ -24,10 +24,7 @@ export default function KurocoSearch({ data, pageInfo, tag }) {
 
     const handlePage = async (pageNumber) => {
 
-        pageNumber=Math.max(1,pageNumber);
-        pageNumber=Math.min(page.totalPageCnt,pageNumber);
         setCurrPageNo(pageNumber);
-
         try {
             var res;
             if (activeTag == true) {
@@ -138,13 +135,15 @@ export default function KurocoSearch({ data, pageInfo, tag }) {
             <div className="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
                 <div className="flex-1 flex justify-between sm:hidden">
                     <button
+                        disabled={currPageNo <= 1}
                         onClick={() => handlePage(currPageNo-1)}
-                        className="hover:bg-indigo-50 hover:border-indigo-500 hover:text-indigo-600 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white">
+                        className="hover:bg-indigo-50 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white">
                         Previous
                     </button>
                     <button
+                        disabled={currPageNo >= page.totalPageCnt}
                         onClick={() => handlePage(currPageNo+1)}
-                        className="hover:bg-indigo-50 hover:border-indigo-500 hover:text-indigo-600 ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white ">
+                        className="hover:bg-indigo-50  ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white ">
                         Next
                     </button>
                 </div>
@@ -157,7 +156,7 @@ export default function KurocoSearch({ data, pageInfo, tag }) {
                     </div>
                     <div>
                         <nav className="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
-                            <button onClick={() => handlePage(currPageNo-1)}
+                            <button disabled={currPageNo <= 1} onClick={() => handlePage(currPageNo-1)} 
                             className="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                 <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
                             </button>
@@ -169,7 +168,7 @@ export default function KurocoSearch({ data, pageInfo, tag }) {
                                 </button>
                             ))}
 
-                            <button onClick={() => handlePage(currPageNo+1)}
+                            <button disabled={currPageNo >= page.totalPageCnt} onClick={() => handlePage(currPageNo+1)}
                             className="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
                                 <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
                             </button>
