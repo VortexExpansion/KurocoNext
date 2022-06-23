@@ -4,14 +4,14 @@ import KurocoSearch from '../components/kurocoSearch';
 import AnimatedText from '../components/animatedText';
 import { SlideShowData, FetchSushiData, TagsData, CategoriesData, title } from '../components/imports';
 
-export default function HomePage({data,tag,categories,slideShowData}){
+export default function HomePage({data, pageInfo, tag,categories,slideShowData}){
     return(
         <>
             <div className='pageBg'> 
             <Slideshow data={slideShowData}/>
             <AnimatedText text={title}/>
             <CategoryCard categories={categories}/>
-            <KurocoSearch data={data} tag={tag}/>
+            <KurocoSearch data={data} pageInfo={pageInfo} tag={tag}/>
             </div>
         </>
     );
@@ -25,6 +25,7 @@ export async function getStaticProps() {
   return {
     props: {
       data : results.list,
+      pageInfo : results.pageInfo,
       tag : tags.list,
       categories : categories.list,
       slideShowData : slideShowData.list

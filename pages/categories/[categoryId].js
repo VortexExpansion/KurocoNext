@@ -22,10 +22,10 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const data = await fetch('https://sushipedia.g.kuroco.app/rcms-api/3/fetchSushi').then(res => res.json());
+  const data = await fetch('https://sushipedia.g.kuroco.app/rcms-api/3/categories').then(res => res.json());
   return {
     paths: data.list.map(category => {
-      const categoryId = category.contents_type;
+      const categoryId = category.topics_category_id;
       return {
         params: {
           categoryId: categoryId + ""
