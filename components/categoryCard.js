@@ -1,8 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 
 export default function CategoryCard({ categories }) {
-    console.log('Here');
-    console.log(categories);
+        
     const key = 'category_nm' //This is the category name in Kuroco;
     const categoriesList = [...new Map(categories.map(sushi => [sushi[key], sushi])).values()];
 

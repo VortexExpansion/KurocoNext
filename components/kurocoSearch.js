@@ -15,8 +15,6 @@ export default function KurocoSearch({data,tag}) {
     }
 
     const handleTagClick = async (ID) =>{
-        console.log(ID);
-        console.log(allSushi);
         if(ID==7){
             setDataSushi(allSushi);
         }
