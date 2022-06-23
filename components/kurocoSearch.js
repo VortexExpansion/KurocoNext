@@ -5,6 +5,7 @@ import { SushiCard } from './sushiCard';
 export default function KurocoSearch({data,tag}) {
 
     const [dataSushi, setDataSushi] = useState(data);
+    const [allSushi, setAllSushi] = useState(data);
     const [isLoading, setIsLoading] = useState(false);
     const [err, setErr] = useState('');
     const [searchKey, setSearchKey] = useState('');
@@ -15,15 +16,21 @@ export default function KurocoSearch({data,tag}) {
 
     const handleTagClick = async (ID) =>{
         console.log(ID);
-        try {
-            let [response] = await Promise.all([
-                fetch(`https://sushipedia.g.kuroco.app/rcms-api/3/fetchSushi?tag_id%5B%5D=${ID}`)
-            ]);
-
-            var data = await response.json();
-            setDataSushi(data.list);
-        } catch (err) {
-            setErr(err.message);
+        console.log(allSushi);
+        if(ID==7){
+            setDataSushi(allSushi);
+        }
+        else{
+            try {
+                let [response] = await Promise.all([
+                    fetch(`https://sushipedia.g.kuroco.app/rcms-api/3/fetchSushi?tag_id%5B%5D=${ID}`)
+                ]);
+    
+                var filteredData = await response.json();
+                setDataSushi(filteredData.list);
+            } catch (err) {
+                setErr(err.message);
+            }
         }
     }
 
@@ -81,7 +88,7 @@ export default function KurocoSearch({data,tag}) {
             {/* TAG SEARCH */}
             <div className='relative mx-20'>
                 {tag.map((tag,item) => (
-                    <button key={item} onClick={()=> handleTagClick(tag.tag_id)}  className="m-1 px-4 py-2 rounded-full bg-gray-300">
+                    <button key={item} onClick={()=> handleTagClick(tag.tag_id)}  className="m-1 py-2 rounded-full h-10 px-5 transition-colors duration-150 bg-gray-200 focus:bg-blue-500 focus:text-white hover:bg-blue-200">
                     {tag.tag_nm}
                 </button>
                 ))}
