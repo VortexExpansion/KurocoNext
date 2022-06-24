@@ -6,60 +6,6 @@ api_header:
     config: '{"security": "cookie", "ip_whitelist": []}'
 uri_list:
     -
-        api_uri: service
-        summary: ''
-        description: ''
-        http_method: GET
-        module_nm: topics
-        version_no: '1'
-        model_classpath: Topics
-        model_method: details
-        model_method_params: '{"ext_group": true, "topics_group_id": [7]}'
-        memo: null
-        auth: '{"class": null, "value": null}'
-        open_flg: 1
-        request_api_id: null
-        postprocess: '[]'
-        cache_settings: '{}'
-        preprocess: '[]'
-        rate_settings: '{}'
-    -
-        api_uri: search
-        summary: ''
-        description: ''
-        http_method: GET
-        module_nm: topics
-        version_no: '1'
-        model_classpath: Topics
-        model_method: list
-        model_method_params: '{"topics_group_id": [8], "filter_request_allow_list": ["keyword:[subject,ext_col_01]"]}'
-        memo: null
-        auth: '{"class": null, "value": null}'
-        open_flg: 1
-        request_api_id: null
-        postprocess: '[]'
-        cache_settings: '{}'
-        preprocess: '[]'
-        rate_settings: '{}'
-    -
-        api_uri: allsushis
-        summary: ''
-        description: ''
-        http_method: GET
-        module_nm: topics
-        version_no: '1'
-        model_classpath: Topics
-        model_method: list
-        model_method_params: '{"shuffle": "yes", "topics_group_id": [16]}'
-        memo: null
-        auth: '{"class": null, "value": null}'
-        open_flg: 1
-        request_api_id: null
-        postprocess: '[]'
-        cache_settings: '{}'
-        preprocess: '[]'
-        rate_settings: '{}'
-    -
         api_uri: fetchSushi
         summary: ''
         description: ''
@@ -77,24 +23,6 @@ uri_list:
         cache_settings: '[]'
         preprocess: '{"content_subject":"/rcms-api/3/fetchCategoryandSushi","category_name":""}'
         rate_settings: '[]'
-    -
-        api_uri: search
-        summary: ''
-        description: ''
-        http_method: GET
-        module_nm: topics
-        version_no: '1'
-        model_classpath: Topics
-        model_method: details
-        model_method_params: '{"topics_group_id": [8]}'
-        memo: null
-        auth: '{"class": null, "value": null}'
-        open_flg: 1
-        request_api_id: null
-        postprocess: '[]'
-        cache_settings: '{}'
-        preprocess: '[]'
-        rate_settings: '{}'
     -
         api_uri: tags
         summary: ''
@@ -168,24 +96,6 @@ uri_list:
         preprocess: '[]'
         rate_settings: '[]'
     -
-        api_uri: fetchCategory
-        summary: ''
-        description: ''
-        http_method: GET
-        module_nm: topics
-        version_no: '1'
-        model_classpath: Topics
-        model_method: details
-        model_method_params: '{}'
-        memo: null
-        auth: '{"class": null, "value": null}'
-        open_flg: 1
-        request_api_id: null
-        postprocess: '[]'
-        cache_settings: '[]'
-        preprocess: '[]'
-        rate_settings: '[]'
-    -
         api_uri: categories
         summary: ''
         description: ''
@@ -195,42 +105,6 @@ uri_list:
         model_classpath: TopicsCategory
         model_method: list
         model_method_params: '{"topics_group_id": 7}'
-        memo: null
-        auth: '{"class": null, "value": null}'
-        open_flg: 1
-        request_api_id: null
-        postprocess: '[]'
-        cache_settings: '[]'
-        preprocess: '[]'
-        rate_settings: '[]'
-    -
-        api_uri: searchCategoryAndSushi
-        summary: ''
-        description: ''
-        http_method: GET
-        module_nm: topics
-        version_no: '1'
-        model_classpath: Topics
-        model_method: list
-        model_method_params: '{"topics_group_id": [7], "filter_request_allow_list": ["subject", "contents_type"]}'
-        memo: null
-        auth: '{"class": null, "value": null}'
-        open_flg: 1
-        request_api_id: null
-        postprocess: '[]'
-        cache_settings: '[]'
-        preprocess: '[]'
-        rate_settings: '[]'
-    -
-        api_uri: getTags
-        summary: ''
-        description: ''
-        http_method: GET
-        module_nm: tag
-        version_no: '1'
-        model_classpath: Tag
-        model_method: list
-        model_method_params: '{}'
         memo: null
         auth: '{"class": null, "value": null}'
         open_flg: 1
