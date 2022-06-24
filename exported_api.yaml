@@ -68,7 +68,7 @@ uri_list:
         version_no: '1'
         model_classpath: Topics
         model_method: list
-        model_method_params: '{"shuffle": "yes", "get_tag_flg": true, "topics_group_id": [7], "filter_request_allow_list": ["subject", "contents_type_nm", "contents_type", "ext_1"]}'
+        model_method_params: '{"cnt": 4, "get_tag_flg": true, "topics_group_id": [7], "filter_request_allow_list": ["subject", "contents_type_nm", "contents_type", "ext_1"]}'
         memo: null
         auth: '{"class": null, "value": null}'
         open_flg: 1
@@ -194,7 +194,7 @@ uri_list:
         version_no: '1'
         model_classpath: TopicsCategory
         model_method: list
-        model_method_params: '{}'
+        model_method_params: '{"topics_group_id": 7}'
         memo: null
         auth: '{"class": null, "value": null}'
         open_flg: 1
@@ -239,10 +239,28 @@ uri_list:
         cache_settings: '[]'
         preprocess: '[]'
         rate_settings: '[]'
+    -
+        api_uri: getEditorpicks
+        summary: ''
+        description: ''
+        http_method: GET
+        module_nm: topics
+        version_no: '1'
+        model_classpath: Topics
+        model_method: list
+        model_method_params: '{"tag_id": ["8"], "shuffle": "yes", "topics_group_id": [7]}'
+        memo: null
+        auth: '{"class": null, "value": null}'
+        open_flg: 1
+        request_api_id: null
+        postprocess: '[]'
+        cache_settings: '[]'
+        preprocess: '[]'
+        rate_settings: '[]'
 static_contents:
     -
         subject: /rcms-api/3/fetchCategoryandSushi
-        contents: "{if $smarty.request.contents_type_nm!=null}\r\n{api_internal endpoint='/rcms-api/3/categories' method='GET' query='topics_group_id=7' var='response' status_var='status'}\r\n\r\n{* {$response|@debug_print_var} response debug temaplate*}\r\n{* {logger msg1=$sushiName msg2=$categoryName msg3=$categoryID} Logger template *}\r\n{* {logger msg1=$smarty.request.contents_type_nm msg2=$categoryName.$index msg3=$sushiName.$index msg4=\"Ultimate\"} *}\r\n\r\n\r\n{foreach from=$response.list item='row' key='key'}\r\n        {assign var=categoryName.$key value=$row.category_nms.0}\r\n{/foreach}\r\n\r\n{foreach from=$response.list item='row' key='key'}\r\n        {assign var=categoryID.$key value=$row.topics_category_id}\r\n{/foreach}\r\n\r\n{logger msg1=$sushiName msg2=$categoryName msg3=$categoryID}\r\n\r\n\r\n\r\n{assign var=ID value=-1}    \r\n{foreach from=$categoryName item='value' key='index'}\r\n    {* {logger msg1=$smarty.request.contents_type_nm msg2=$categoryName.$index msg3=\"Ultimate\"} *}\r\n    {* {if $value|lower == $smarty.request.contents_type_nm|lower}\r\n        {assign var=ID value=$index}\r\n    {/if} *}\r\n\r\n    {logger msg1='lessgo' msg3=$value msg4=$smarty.request.contents_type_nm}\r\n    {assign var=temp value=$value|replace:$smarty.request.contents_type_nm:''}\r\n     {logger msg1='lessgo2' msg2=$temp msg3=$value msg4=$smarty.request.contents_type_nm}   \r\n    {if $temp != $value}\r\n        {assign var=ID value=$index}\r\n    {/if}\r\n{/foreach}          \r\n\r\n{if $ID == -1} {assign var=fetchID value=0}\r\n{else}         {assign var=fetchID value=$categoryID.$ID}\r\n{/if}\r\n\r\n{logger msg1=$fetchID msg2=\"Fetched ID\"}  \r\n\r\n{assign_array var=request values=$smarty.request}  \r\n{assign var=request.filter value='contents_type eq '|cat:$fetchID}  \r\n{return value=$request}\r\n{/if}"
+        contents: "{if $smarty.request.contents_type_nm!=null}\r\n{api_internal endpoint='/rcms-api/3/categories' method='GET' query='topics_group_id=7' var='response' status_var='status'}\r\n\r\n{* {$response|@debug_print_var} response debug temaplate*}\r\n{* {logger msg1=$sushiName msg2=$categoryName msg3=$categoryID} Logger template *}\r\n{* {logger msg1=$smarty.request.contents_type_nm msg2=$categoryName.$index msg3=$sushiName.$index msg4=\"Ultimate\"} *}\r\n\r\n\r\n{foreach from=$response.list item='row' key='key'}\r\n        {assign var=categoryName.$key value=$row.category_nms.0}\r\n{/foreach}\r\n\r\n{foreach from=$response.list item='row' key='key'}\r\n        {assign var=categoryID.$key value=$row.topics_category_id}\r\n{/foreach}\r\n\r\n{logger msg1=$sushiName msg2=$categoryName msg3=$categoryID}\r\n\r\n\r\n\r\n{assign var=ID value=-1}    \r\n{foreach from=$categoryName item='value' key='index'}\r\n    {* {logger msg1=$smarty.request.contents_type_nm msg2=$categoryName.$index msg3=\"Ultimate\"} *}\r\n    {* {if $value|lower == $smarty.request.contents_type_nm|lower}\r\n        {assign var=ID value=$index}\r\n    {/if} *}\r\n\r\n    {logger msg1='lessgo' msg3=$value msg4=$smarty.request.contents_type_nm}\r\n    {assign var=temp value=$value|replace:$smarty.request.contents_type_nm:''}\r\n     {logger msg1='lessgo2' msg2=$temp msg3=$value msg4=$smarty.request.contents_type_nm}   \r\n    {if $temp != $value}\r\n        {assign var=ID value=$index}\r\n    {/if}\r\n{/foreach}          \r\n\r\n{if $ID == -1} {assign var=fetchID value=0}\r\n{else}         {assign var=fetchID value=$categoryID.$ID}\r\n{/if}\r\n\r\n{logger msg1=$fetchID msg2=\"Fetched ID\"}  \r\n\r\n{assign_array var=request values=$smarty.request}  \r\n{if $smarty.request.filter != \"\"}\r\n    {assign var=request.filter value=$smarty.request.filter|cat:' or contents_type eq '|cat:$fetchID}  \r\n{else}\r\n    {assign var=request.filter value='contents_type eq '|cat:$fetchID}  \r\n{/if}\r\n{return value=$request}\r\n{/if}"
         open_flg: 1
         design_flg: null
         secure_level: null
