@@ -4,7 +4,7 @@ export default function AnimatedText({ text }) {
             <br></br>
             <div className="md:text-8xl font-semibold text-center
             bg-gradient-to-r bg-clip-text  text-transparent 
-            from-white via-teal-600 to-white
+            from-rose-500 via-black to-rose-500
             animate-text
             ">
             {text}

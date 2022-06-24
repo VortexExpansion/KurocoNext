@@ -124,7 +124,7 @@ export default function KurocoSearch({ data, pageInfo, tag }) {
             {/* TAG SEARCH */}
             <div className='relative mx-20'>
                 {tag.map((tag, item) => (
-                    <button key={item} onClick={() => handleTagClick(tag.tag_id)} className="m-1 py-2 rounded-full h-10 px-5 transition-colors duration-150 bg-gray-200 focus:bg-blue-500 focus:text-white hover:bg-blue-200">
+                    <button key={item} onClick={() => handleTagClick(tag.tag_id)} className="border border-indigo-500 m-1 py-2 rounded-full h-10 px-5 transition-colors duration-150 bg-white focus:bg-blue-500 focus:text-white hover:bg-blue-200">
                         {tag.tag_nm}
                     </button>
                 ))}
