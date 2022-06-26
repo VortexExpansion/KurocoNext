@@ -30,6 +30,9 @@ Storing and rendering content for `Category Settings` of a content list
 - [Kuroco API](https://kuroco.app/docs/tutorials/configure-endpoint/) : 
 Configuring multiple custom endpoints for fetching results
 
+- [Kuroco Pagination](https://kuroco.app/docs/tutorials/splitting-the-contents-list-into-multiple-pages/) : 
+Distributing data responses over multiple pages for scalability and faster fetching without much load on the server
+
 ## Installation 
 
 ### Requirements
