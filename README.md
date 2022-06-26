@@ -61,6 +61,15 @@ yarn build
 
 <img src="https://user-images.githubusercontent.com/55151618/174977445-16bbd51f-e946-4af5-aa0b-09ff10ffac73.png" width="700" />
 
+## Testing 
+An E2E testing environment has been set up using Cypress 
+```
+yarn add cypress
+open cypress
+```
+To write custom tests for the website, configure E2E testing from cypress and modify the `cypress/e2e/spec.cy.js` file.  
+Follow this [documentation](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test) for reference.
+
 # Documentation for backend
 - ## Add new Sushi
 Select `Sushi List` from `Content` Dropdown menu, then on the top right corner of the screen click on `Add`  
