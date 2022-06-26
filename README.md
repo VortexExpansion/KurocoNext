@@ -40,7 +40,7 @@ Distributing data responses over multiple pages for scalability and faster fetch
 - Yarn  :`1.15.x`
 
 
-### Steps to run locally :　
+### Steps to run locally
 ```
 git clone https://github.com/VortexExpansion/KurocoNext.git
 cd KurocoNext
@@ -67,8 +67,7 @@ An E2E testing environment has been set up using Cypress
 yarn add cypress
 open cypress
 ```
-To write custom tests for the website, configure E2E testing from cypress and modify the `cypress/e2e/spec.cy.js` file.  
-Follow this [documentation](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test) for reference.
+To write custom tests for the website, configure E2E testing from cypress and modify the `cypress/e2e/spec.cy.js` file. Follow this [documentation](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test) for reference.
 
 # Documentation for backend
 - ## Add new Sushi
