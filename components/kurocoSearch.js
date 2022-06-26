@@ -15,6 +15,7 @@ export default function KurocoSearch({ data, pageInfo, tag }) {
     const [activeTag, setActiveTag] = useState(false);
     const [tagID, setTagID] = useState(0);
     const [currPageNo, setCurrPageNo] = useState(1);
+    const [currTag, setcurrTag] = useState(7); //All Sushi Tag ID in Kuroco
 
 
     function handleChange(e) {
@@ -51,6 +52,7 @@ export default function KurocoSearch({ data, pageInfo, tag }) {
 
     const handleTagClick = async (ID) => {
         setActiveTag(true);
+        setcurrTag(ID);
         if (ID == 7) {
             setDataSushi(allSushi);
             setPage(allPage);
@@ -77,6 +79,7 @@ export default function KurocoSearch({ data, pageInfo, tag }) {
         e.preventDefault();
         setIsLoading(true);
         setActiveTag(false);
+        setcurrTag(0);
 
         try {
             let [response] = await Promise.all([
@@ -124,7 +127,11 @@ export default function KurocoSearch({ data, pageInfo, tag }) {
             {/* TAG SEARCH */}
             <div className='relative mx-20'>
                 {tag.map((tag, item) => (
-                    <button key={item} onClick={() => handleTagClick(tag.tag_id)} className="border border-indigo-500 m-1 py-2 rounded-full h-10 px-5 transition-colors duration-150 bg-white focus:bg-blue-500 focus:text-white hover:bg-blue-200">
+                    <button key={item}
+                    onClick={() => handleTagClick(tag.tag_id)} 
+                    // className="border border-indigo-500 m-1 py-2 rounded-full h-10 px-5 transition-colors duration-150 bg-white focus:bg-blue-500 focus:text-white hover:bg-blue-200"
+                    className={`${currTag === tag.tag_id?"text-white bg-blue-500 ":""}border border-indigo-500 bg-white m-1 py-2 rounded-full h-10 px-5`}
+                    >
                         {tag.tag_nm}
                     </button>
                 ))}
@@ -150,8 +157,11 @@ export default function KurocoSearch({ data, pageInfo, tag }) {
                 <div className="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                     <div>
                         <p className="text-sm text-gray-700">
-                            Showing <span className="font-medium">{page.firstIndex}</span> to <span className="font-medium">{page.lastIndex}</span> of{' '}
-                            <span className="font-medium">{page.totalCnt}</span> results
+                            {/* Showing <span className="font-medium">{page.firstIndex}</span> to <span className="font-medium">{page.lastIndex}</span> of{' '}
+                            <span className="font-medium">{page.totalCnt}</span> results */}
+                            {page.totalCnt == 0? "No results ": 
+                            "Showing "+page.firstIndex+"-"+page.lastIndex+" of "+page.totalCnt+" results" 
+                            }
                         </p>
                     </div>
                     <div>

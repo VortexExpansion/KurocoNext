@@ -35,9 +35,13 @@ export default function SlideShow({data}){
             {data.map((sushi)=> 
                 <div key={sushi.topics_id} className="slide">
                     <img className="imageSlide" src={sushi.ext_1.url+"?crop=5:4,smart?optimize=high"}></img>
-                    <div className="sliderText">
-                        <h1 className='mx-9 sm:text-3xl md:text-7xl'>{sushi.ext_2} </h1>
-                        {/* <h3 >{sushi.ext_4}</h3> */}
+                    {/* <div class="relative top-5 left-5 px-6 py-4">
+	                        <h4 class=" text-xl font-semibold text-white">This is the title</h4>
+	                  </div> */}
+
+                    <div className="sliderText ">
+                        <h1 className='mx-9 inline sm:text-3xl md:text-5xl'>{sushi.ext_2} </h1>
+                        <h3 className='mx-9 sm:inline'>{sushi.ext_4}</h3>
                     </div>
                 </div>
              )}
