@@ -69,6 +69,21 @@ open cypress
 ```
 To write custom tests for the website, configure E2E testing from cypress and modify the `cypress/e2e/spec.cy.js` file. Follow this [documentation](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test) for reference.
 
+## Content Structure
+
+The content structure has only one component `Sushi List` and all the information is nested inside it and can be accessed through the content list editor menu under `Category settings` and `Related tags`.
+
+```mermaid
+graph TD;
+    X{All Sushi} -->|/rcms-api/3/fetchSushi - Model:Topics| A[Sushi Item];
+    A-->|/rcms-api/3/categories - Model : TopicsCategory| B[Category Settings];
+    A-->|/rcms-api/3/tags - Model : Tag| C[Tags];
+    B-->D[Dropdown category];
+    C-->E[Tag 01];
+    C-->F[Tag 02];
+```
+
+
 # Documentation for backend
 - ## Add new Sushi
 Select `Sushi List` from `Content` Dropdown menu, then on the top right corner of the screen click on `Add`  
