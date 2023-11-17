@@ -47,7 +47,7 @@ jobs:
                       
       - name: Install dependencies
         if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}      
-        run: npm ci  
+        run: yarn install --frozen-lockfile
   
       - name: Zip artifact for upload
         run: cd out && zip ../out.zip . -r
@@ -89,7 +89,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ env.BRANCH }}-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependencies
         if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Zip artifact for upload
         run: cd out && zip ../out.zip . -r
