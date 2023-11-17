@@ -48,7 +48,8 @@ jobs:
       - name: Install dependencies
         if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}      
         run: yarn install --frozen-lockfile
-  
+      - name: Build
+        run: yarn build
       - name: Zip artifact for upload
         run: cd out && zip ../out.zip . -r
       - name: Archive Production Artifact
@@ -90,7 +91,8 @@ jobs:
       - name: Install dependencies
         if: ${{ steps.node_modules_cache_id.outputs.cache-hit != 'true' }}
         run: yarn install --frozen-lockfile
-
+      - name: Build
+        run: yarn build
       - name: Zip artifact for upload
         run: cd out && zip ../out.zip . -r
       - name: Archive Production Artifact
