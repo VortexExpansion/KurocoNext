@@ -102,7 +102,7 @@ jobs:
       - name: Webhook
         uses: diverta/workflow-webhook@v2
         env:
-        webhook_url: "https://sushipedia.g.kuroco.app/direct/menu/github/"
-        webhook_secret: "8d90dc3cca20f1c207ce5e4c5d357742"
-        data: '{"single_zip":"1","domain":"sushipedia.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
+          webhook_url: "https://sushipedia.g.kuroco.app/direct/menu/github/"
+          webhook_secret: "8d90dc3cca20f1c207ce5e4c5d357742"
+          data: '{"single_zip":"1","domain":"sushipedia.g.kuroco-front.app","pr":"${{ github.event.issue.pull_request.url }}",  "repository":"${{ github.repository }}", "run_id":"${{ github.run_id }}", "hash":"${{ github.sha }}"}'
   
