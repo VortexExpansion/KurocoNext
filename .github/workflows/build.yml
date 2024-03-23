@@ -102,7 +102,7 @@ jobs:
           path: out.zip
           retention-days: 7
       - name: Webhook
-        uses: diverta/workflow-webhook@v3
+        uses: diverta/workflow-webhook@v2
         env:
           webhook_url: "https://sushipedia.g.kuroco.app/direct/menu/github/"
           webhook_secret: "8d90dc3cca20f1c207ce5e4c5d357742"
